@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('includes.message-block')
 <div class="container">
     <section class="new-post">
         <div class="row">
