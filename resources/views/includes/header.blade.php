@@ -13,7 +13,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ url('src/css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::to('src/css/app.css') }}" rel="stylesheet">
 
 </head>
 <body id="app-layout">

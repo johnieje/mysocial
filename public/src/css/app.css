@@ -5,3 +5,22 @@ body {
 .fa-btn {
    margin-right: 6px;
 }
+
+.new-post {
+    padding: 10px;
+}
+
+.posts header{
+    margin-bottom: 20px;
+}
+
+.posts .post {
+    padding-left: 10px;
+    border-left: 3px solid #8f00b3;
+    margin-bottom: 10px;
+}
+
+.posts .post .info {
+    font-style: italic;
+    color: #aaa;
+}

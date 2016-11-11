@@ -25,18 +25,23 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-     Route::get('/', function () {
-    return view('welcome');
-    });
+     
 });
 
 Route::group(['middleware' => 'web'], function () {
-   
+    Route::get('/', function () {
+    return view('welcome');
+    });
+    
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', [
+        'uses' => 'HomeController@index',
+        'as' => 'home'
+    ]);
     
-    Route::post('share', function(){
-        return "okay";
-    });
+    Route::post('/createpost', [
+        'uses' => 'PostController@postCreatePost',
+        'as' => 'createpost'
+    ]);
 });
