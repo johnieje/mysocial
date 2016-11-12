@@ -9,6 +9,28 @@ use Validator;
 
 class PostController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $posts = Post::all();
+        
+        return view('home', ['posts' => $posts]);
+    }
+    
     public function postCreatePost(Request $request){
         //validate here
         $this->validate($request, [
@@ -17,11 +39,12 @@ class PostController extends Controller
         
         $post = new Post; //create new post instance
         $post->body = $request['post-body'];
-        $message = "An error occurred while creating your post! Try again.";
         if($request->user()->posts()->save($post)){// save post as current user
-            $message = "Your post has been successfully created";
-        } 
-        
-        return redirect()->route('home')->with(['message' => $message]);
+            $message_success = "Your post has been successfully created";
+            return redirect()->route('home')->with(['message-success' => $message_success]);
+        }else{
+            $message_fail = "An error occurred while creating your post! Try again.";
+            return redirect()->route('home')->with(['message-fail' => $message_fail]);
+        }   
     }
 }

@@ -36,7 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', [
-        'uses' => 'HomeController@index',
+        'uses' => 'PostController@index',
         'as' => 'home'
     ]);
     

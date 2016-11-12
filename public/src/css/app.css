@@ -24,3 +24,12 @@ body {
     font-style: italic;
     color: #aaa;
 }
+
+.alert-danger ul {
+    list-style: none;
+}
+
+.alert-danger,
+.alert-success {
+    text-align: center;
+}

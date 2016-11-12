@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-@include('includes.message-block')
+
 <div class="container">
+   
     <section class="new-post">
+         @include('includes.message-block')
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <form action="{{ url('createpost') }}" method="post">
@@ -21,31 +23,20 @@
     <section class="row posts">
         <div class="col-md-10 col-md-offset-1">
             <header><h3>More posts...</h3></header>
-            <article class="post">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, </p>
-                <div class="info">
-                    Posted by John on 11 11 2016
-                </div>
-                <div class="interaction">
-                   <a href="">Like</a> | 
-                   <a href="">Dislike</a> | 
-                   <a href="">Edit</a> | 
-                   <a href="">Delete</a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, </p>
-                <div class="info">
-                    Posted by John on 11 11 2016
-                </div>
-                <div class="interaction">
-                   <a href="">Like</a> | 
-                   <a href="">Dislike</a> | 
-                   <a href="">Edit</a> | 
-                   <a href="">Delete</a>
-                </div>
-            </article>
+            @foreach($posts as $post)
+                <article class="post">
+                    <p>{{ $post->body }}</p>
+                    <div class="info">
+                        Posted by {{ $post->user->name }} on {{ $post->created_at }}
+                    </div>
+                    <div class="interaction">
+                       <a href="">Like</a> | 
+                       <a href="">Dislike</a> | 
+                       <a href="">Edit</a> | 
+                       <a href="">Delete</a>
+                    </div>
+                </article>
+            @endforeach
         </div>
     </section>
 </div>
