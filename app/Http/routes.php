@@ -52,4 +52,9 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'delete-post',
         'middleware' => 'auth'
     ]);
+    
+    Route::post('/edit-post', [
+        'uses' => 'PostController@postEditPost',
+        'as' => "edit"
+    ]);
 });
