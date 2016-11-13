@@ -37,11 +37,19 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', [
         'uses' => 'PostController@index',
-        'as' => 'home'
+        'as' => 'home',
+        'middleware' => 'auth'
     ]);
     
     Route::post('/createpost', [
         'uses' => 'PostController@postCreatePost',
-        'as' => 'createpost'
+        'as' => 'createpost',
+        'middleware' => 'auth'
+    ]);
+    
+    Route::get('/delete-post/{post_id}', [
+        'uses' => 'PostController@getDeletePost',
+        'as' => 'delete-post',
+        'middleware' => 'auth'
     ]);
 });

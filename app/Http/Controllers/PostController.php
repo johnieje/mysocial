@@ -47,4 +47,14 @@ class PostController extends Controller
             return redirect()->route('home')->with(['message-fail' => $message_fail]);
         }   
     }
+    
+    public function getDeletePost($post_id){
+        $post = Post::where('id', $post_id)->first(); //get post to delete
+        
+        if($post->delete()){
+            return redirect()->route('home')->with(['message-success' => 'Post successfully deleted']);
+        }else{
+            return redirect()->route('home')->with(['message-fail' => 'Sorry, An error ocurred while deleting post. Please try again!']);
+        }
+    }
 }
