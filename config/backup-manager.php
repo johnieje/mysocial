@@ -1,0 +1,61 @@
+<?php
+
+return [
+    'local' => [
+        'type' => 'Local',
+        'root' => storage_path('app'),
+    ],
+    's3' => [
+        'type' => 'AwsS3',
+        'key'    => '',
+        'secret' => '',
+        'region' => 'us-east-1',
+        'bucket' => '',
+        'root'   => '',
+    ],
+    'gcs' => [
+        'type' => 'Gcs',
+        'key'    => '',
+        'secret' => '',
+        'bucket' => '',
+        'root'   => '',
+    ],
+    'rackspace' => [
+        'type' => 'Rackspace',
+        'username' => '',
+        'key' => '',
+        'container' => '',
+        'zone' => '',
+        'endpoint' => 'https://identity.api.rackspacecloud.com/v2.0/',
+        'root' => '',
+    ],
+    'dropbox' => [
+        'type' => 'Dropbox',
+        'token' => 'wVkeJwUjI24AAAAAAAACtUi0Up8HCnJKGgdaG7CvK7IEwK5nOYlyfLtG4CZd2Iae',
+        'key' => 'z1j3uum10c0thqg',
+        'secret' => 'z1j3uum10c0thqg',
+        'app' => 'socialight',
+        'root' => '',
+    ],
+    'ftp' => [
+        'type' => 'Ftp',
+        'host' => '',
+        'username' => '',
+        'password' => '',
+        'port' => 21,
+        'passive' => true,
+        'ssl' => true,
+        'timeout' => 30,
+        'root' => '',
+    ],
+    'sftp' => [
+        'type' => 'Sftp',
+        'host' => '',
+        'username' => '',
+        'password' => '',
+        'port' => 21,
+        'timeout' => 10,
+        'privateKey' => '',
+        'root' => '',
+    ],
+];
