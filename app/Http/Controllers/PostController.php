@@ -6,6 +6,7 @@ use App\Post;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -26,7 +27,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'DESC')->get(); //list all post  starting with last posted
         
         return view('home', ['posts' => $posts]);
     }
@@ -50,7 +51,9 @@ class PostController extends Controller
     
     public function getDeletePost($post_id){
         $post = Post::where('id', $post_id)->first(); //get post to delete
-        
+        if(Auth::user() != $post->user){
+            return redirect()->route('home')->with(['message-fail' => 'You are not allowed to delete this post!']);
+        }
         if($post->delete()){
             return redirect()->route('home')->with(['message-success' => 'Post successfully deleted']);
         }else{
