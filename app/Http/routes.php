@@ -72,4 +72,9 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@getUserImage',
         'as' => 'account-image'
     ]);
+    
+    Route::get('/account/delete-image/{filename}', [
+        'uses' => 'HomeController@getImageDelete',
+        'as' => 'delete-image'
+    ]);
 });

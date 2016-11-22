@@ -59,4 +59,9 @@ class HomeController extends Controller
        return new Response($file, 200);
    }
    
+   public function getImageDelete($filename){
+       Storage::delete($filename);
+       return redirect()->route('account');
+   }
+   
 }

@@ -35,6 +35,7 @@
 <section class="row new-post">
     <div class="col-md-10 col-md-offset-1">
         <img src="{{ url('account-image',['filename' => $user->name . '-' . $user->id . '-' . '.jpg'])}}" alt="" class="img-responsive">
+        <a href="{{ url('/account/delete-image', ['filename' =>  $user->name . '-' . $user->id . '-' . '.jpg']) }}">Remove</a>
     </div>
 </section>
     
