@@ -62,4 +62,14 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@getAccount',
         'as' => 'account'
     ]);
+    
+    Route::post('accountupdate', [
+        'uses' => 'HomeController@postUpdateAccount',
+        'as' => 'accountupdate'
+    ]);
+    
+    Route::get('/account-image/{filename}',[
+        'uses' => 'HomeController@getUserImage',
+        'as' => 'account-image'
+    ]);
 });

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    This is an individual page title
+    Socialight
 @endsection
 
 @section('content')
