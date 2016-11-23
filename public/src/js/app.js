@@ -22,3 +22,16 @@ $('#save-modal').on('click', function(){
         $('#edit-modal').modal('hide');
     });
 });
+
+$('.like').on('click', function(event){
+    event.preventDefault();
+    postId = event.target.parentNode.parentNode.dataset['postid'];
+    var isLike = event.target.previousElementSibling == null ? true : false;
+    $.ajax({
+        'method': 'POST',
+        'url': urlLike,
+        'data': { like: isLike, postId: postId, _token: tokem}
+    }).done(function(){
+        
+    });
+});

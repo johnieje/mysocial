@@ -58,6 +58,11 @@ Route::group(['middleware' => 'web'], function () {
         'as' => "edit"
     ]);
     
+    Route::post('/like-post',[
+        'uses' => 'PostController@postLikePost',
+        'as' => 'like-post'
+    ]);
+    
     Route::get('/account', [
         'uses' => 'HomeController@getAccount',
         'as' => 'account'
