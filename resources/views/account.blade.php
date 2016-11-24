@@ -30,15 +30,22 @@
           </form>
         </div>
     </div>
-
 @if(Storage::disk('local')->has($user->name . '-' . $user->id . '-' . '.jpg'))
 <section class="row new-post">
     <div class="col-md-10 col-md-offset-1">
-        <img src="{{ url('account-image',['filename' => $user->name . '-' . $user->id . '-' . '.jpg'])}}" alt="" class="img-responsive">
-        <a href="{{ url('/account/delete-image', ['filename' =>  $user->name . '-' . $user->id . '-' . '.jpg']) }}">Remove</a>
+        <img src="{{ url('account-image',['filename' => $user->name . '-' . $user->id . '-' . '.jpg'])}}" alt="" class="img-responsive" style="width: 150px; height: 150px; border-radius: 50%; float: left">
+        <div class="remove">
+            <a href="{{ url('/account/delete-image', ['filename' =>  $user->name . '-' . $user->id . '-' . '.jpg']) }}"><i class="fa fa-times" aria-hidden="true"></i></a>
+        </div>
     </div>
 </section>
-    
+@else
+<section class="row new-post">
+    <div class="col-md-10 col-md-offset-1">
+        <img src="{{ url('account-image', ['filename' => 'default.jpg'])}}" alt="" class="img-responsive" style="width: 150px; height: 150px; border-radius: 50%; float: left">
+    </div>
+</section>    
+@endif   
 </div>
-@endif
+
 @endsection
