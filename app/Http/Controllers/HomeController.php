@@ -44,14 +44,11 @@ class HomeController extends Controller
         
         $user = Auth::user();
         $user->name = $request['name'];
-        $user->update();
         
-        $file = $request->file('image');
-        $filename = $user->name . '-' . $user->id . '-' .'.jpg';
-        if($request->hasFile('image')){
-           Storage::disk('local')->put($filename, File::get($file));
-           return redirect()->route('account');
-        } 
+        //check for avatar here
+        
+        $user->update();
+        return redirect()->route('account');
    }
     
    public function getUserImage($filename){

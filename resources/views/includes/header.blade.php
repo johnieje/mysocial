@@ -50,11 +50,6 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative; padding-left: 50px">
-                                @if(Storage::disk('local')->has($user->name . '-' . $user->id . '-' . '.jpg'))
-                                    <img src="{{ url('account-image',['filename' => $user->name . '-' . $user->id . '-' . '.jpg'])}}" alt="" class="img-responsive" style="width: 32px; height: 32px; border-radius: 50%; position: absolute; top:10px; left: 10px">
-                                @else
-                                    <img src="{{ url('account-image', ['filename' => 'default.jpg'])}}" alt="" class="img-responsive"  style="width: 32px; height: 32px; border-radius: 50%; position: absolute; top:10px; left: 10px">
-                                @endif
                                 
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
