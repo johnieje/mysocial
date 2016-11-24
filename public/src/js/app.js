@@ -32,6 +32,11 @@ $('.like').on('click', function(event){
         'url': urlLike,
         'data': { isLike: isLike, postId: postId,  _token: token}
     }).done(function(){
-        
+        event.target.textContent = isLike ? event.target.textContent == "Like" ? "You like this post" : "Like" : event.target.textContent == "Dislike" ? "You don\'t like this post" : "Dislike";
+        if(isLike){
+            event.target.nextElementSibling.textContent = "Dislike";
+        }else{
+            event.target.previousElementSibling.textContent = "Like";
+        }
     });
 });
