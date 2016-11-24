@@ -30,7 +30,7 @@ $('.like').on('click', function(event){
     $.ajax({
         'method': 'POST',
         'url': urlLike,
-        'data': { like: isLike, postId: postId, _token: tokem}
+        'data': { isLike: isLike, postId: postId,  _token: token}
     }).done(function(){
         
     });
