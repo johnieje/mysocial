@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Image;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        
     }
 
     /**
@@ -46,7 +48,14 @@ class HomeController extends Controller
         $user->name = $request['name'];
         
         //check for avatar here
+        $file = $request->file('image');
+        $file_name = $user->name . '-' . $user->id . '-' .'.jpg';
         
+        $user->avatar = $file_name;
+        if($request->hasFile('image')){
+           Storage::disk('local')->put($file_name, File::get($file));
+           //return redirect()->route('account');
+        }
         $user->update();
         return redirect()->route('account');
    }
@@ -57,7 +66,16 @@ class HomeController extends Controller
    }
    
    public function getImageDelete($filename){
-       Storage::delete($filename);
+       $user = Auth::user();
+       $file = User::where('avatar', $filename)->first();
+       if($file){
+           $default_avatar = 'default.jpg';
+           $user->avatar = $default_avatar;
+           
+           $user->update();
+           Storage::delete($filename);
+       }
+       
        return redirect()->route('account');
    }
    
