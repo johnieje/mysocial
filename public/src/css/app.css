@@ -24,10 +24,13 @@ body {
     font-style: italic;
     color: #aaa;
 }
-
-.posts .post img,
-.posts .post p {
-    display: inline-block;
+.posts img {
+    float: left;
+    width: 64px;
+    height: 64px;
+    border-radius:50%;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .alert-danger ul {

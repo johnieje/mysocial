@@ -26,6 +26,7 @@
         <div class="col-md-10 col-md-offset-1">
             <header><h3>More posts...</h3></header>
             @foreach($posts as $post)
+            <img src="{{ url('account-image',['filename' => $post->user->avatar])}}" alt="" class="img-responsive" >
                 <article class="post" data-postid="{{ $post->id}} ">
                     <p>{{ $post->body }}</p>                    
                     <div class="info">
