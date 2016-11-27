@@ -17,7 +17,7 @@
 
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-custom">
         <div class="container">
             <div class="navbar-header">
 

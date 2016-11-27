@@ -47,3 +47,64 @@ body {
     height: 64px;
     border-radius: 50px;
 }
+
+/*
+*
+*
+*
+
+Custom style for the nav-bar
+
+****/
+
+.navbar-custom {
+	background-color: #8f00b3;
+    color:#ffffff;
+  	border-radius:0;
+}
+  
+.navbar-custom .navbar-nav > li > a {
+  	color:#fff;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+	background-color:transparent;
+}
+      
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #b800e6;
+}
+      
+.navbar-custom .navbar-brand {
+  	color:#eeeeee;
+}
+.navbar-custom .navbar-toggle {
+  	background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+  	background-color:#b800e6;
+}
+
+/*
+*
+*
+*
+
+Custom style for the default buttons
+
+****/
+
+.btn-primary {
+    background:  #8f00b3;
+    color: #ffffff;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #b800e6;
+}
+ 
+.btn-primary:active, .btn-primary.active {
+    background: #8f00b3;
+    box-shadow: none;
+}
