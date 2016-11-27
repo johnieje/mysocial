@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Post;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -78,5 +79,19 @@ class HomeController extends Controller
        
        return redirect()->route('account');
    }
+    
+    public function getDeleteAccount($id){
+        $user = Auth::user();
+        
+        $posts = Post::where('user_id', $id)->delete(); // delete all posts of user
+        
+        if($posts){
+           if($user->delete()){ //delete user
+               return redirect()->route('home');
+           }
+        }
+        return false;
+    }
    
+    
 }

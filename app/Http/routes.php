@@ -82,4 +82,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@getImageDelete',
         'as' => 'delete-image'
     ]);
+    
+    Route::get('/delete-account/{id}',[
+        'uses' => 'HomeController@getDeleteAccount',
+        'as' => 'delete-account'
+    ]);
+    
 });
