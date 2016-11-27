@@ -6,7 +6,7 @@
         <a href="#">Terms of Service</a> | <a href="#">Privacy</a>    
       </div>
       <div class="col-md-4">
-        <p class="muted pull-right">© 2013 Socialight. All rights reserved</p>
+        <p class="muted pull-right">© {{ $year }} Socialight. All rights reserved</p>
       </div>
     </div>
   </div>
