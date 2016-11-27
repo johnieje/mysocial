@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10 col-md-offset-1">
             <header><h3>Account Information</h3><hr></header>
             @if(Storage::disk('local')->has($user->name . '-' . $user->id . '-' . '.jpg'))
             <section class="row new-post">
@@ -26,7 +26,7 @@
             </section>    
             @endif  
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 col-md-offset-1">
           <form action="{{ url('/accountupdate') }}" method="post" enctype="multipart/form-data">
               {!! csrf_field() !!}
               
@@ -48,9 +48,12 @@
               <button type="submit" class="btn btn-primary">Update Account</button>
           </form>
         </div>
-    </div>
-
-   
+      <div class="col-md-10 col-md-offset-1">
+      <hr>
+        <p>Would you like to delete your account?</p>
+        <button type="submit" class="btn btn-danger">Delete Account</button>
+      </div>
+    </div>   
 </div>
 
 @endsection

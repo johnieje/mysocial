@@ -25,6 +25,11 @@ body {
     color: #aaa;
 }
 
+.posts .post img,
+.posts .post p {
+    display: inline-block;
+}
+
 .alert-danger ul {
     list-style: none;
 }
@@ -32,4 +37,10 @@ body {
 .alert-danger,
 .alert-success {
     text-align: center;
+}
+
+.thumbnail{
+    width: 64px;
+    height: 64px;
+    border-radius: 50px;
 }

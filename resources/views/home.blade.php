@@ -27,7 +27,7 @@
             <header><h3>More posts...</h3></header>
             @foreach($posts as $post)
                 <article class="post" data-postid="{{ $post->id}} ">
-                    <p>{{ $post->body }}</p>
+                    <p>{{ $post->body }}</p>                    
                     <div class="info">
                         Posted by {{ $post->user->name }} on {{ $post->created_at }}
                     </div>
@@ -44,6 +44,7 @@
                 </article>
             @endforeach
         </div>
+        
     </section>
 </div>
 <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
