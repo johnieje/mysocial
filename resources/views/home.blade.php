@@ -28,9 +28,10 @@
             @foreach($posts as $post)
             <img src="{{ url('account-image',['filename' => $post->user->avatar])}}" alt="" class="img-responsive" >
                 <article class="post" data-postid="{{ $post->id}} ">
+                    <p><a href="#">{{ $post->user->name }}</a></p>
                     <p>{{ $post->body }}</p>                    
                     <div class="info">
-                        Posted by {{ $post->user->name }} on {{ $post->created_at }}
+                        Posted on {{ $post->created_at }}
                     </div>
                     <div class="interaction">
                        <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? "You like this post" : "Like" : "Like" }}</a> | 
@@ -43,6 +44,7 @@
                        
                     </div>
                 </article>
+            <hr>
             @endforeach
         </div>
         
