@@ -12,12 +12,17 @@
             <div class="col-md-10 col-md-offset-1">
                 <form action="{{ url('createpost') }}" method="post">
                     {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="post-body">Write a new post</label>
-                        <textarea name="post-body" id="post-body" rows="5" class="form-control" placeholder="Write your post here..."></textarea>
-                    </div>
-                   
-                    <button type="submit" class="btn btn-primary">Create Post</button>
+                    
+                    <div class="wrap form-group">
+                        <div class="left">
+                            <img src="{{ url('account-image',['filename' => $user->avatar])}}" alt="" class="img-responsive">
+                        </div>
+                        <div class="right">
+                            <label for="post-body" style="margin-left: 10px">Write a new post</label>                        
+                            <textarea name="post-body" id="post-body" rows="3" class="form-control" placeholder="Write your post here..." style=""></textarea>
+                        </div>                  
+                    </div> 
+                    <button type="submit" class="btn btn-primary pull-right">Create Post</button>
                 </form>
             </div>
         </div>
@@ -30,7 +35,7 @@
                 <article class="post" data-postid="{{ $post->id}} ">
                     <p><a href="#">{{ $post->user->name }}</a></p>
                     <p>{{ $post->body }}</p>                    
-                    <div class="info">
+                    <div class="info"></br>
                         Posted on {{ $post->created_at }}
                     </div>
                     <div class="interaction">

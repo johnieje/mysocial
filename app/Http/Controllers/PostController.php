@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('created_at', 'DESC')->get(); //list all post  starting with last posted
         
-        return view('home', ['posts' => $posts]);
+        return view('home', ['posts' => $posts, 'user' => Auth::user()]);
     }
     
     public function postCreatePost(Request $request){

@@ -10,6 +10,31 @@ body {
     padding: 10px;
 }
 
+.left {
+	
+	position: absolute; 
+	padding-left: 10px;
+	width: 73px
+}
+
+.left img {
+	
+	height: 73px;
+	float: left;
+	border-radius: none; 
+	position: absolute; 
+	top: 25px; 
+	left: 0px;
+}
+
+.right {
+	margin-left: 75px;
+}
+
+.post_body {
+		margin-left: 30px;
+}
+
 .posts header{
     margin-bottom: 20px;
 }
@@ -94,17 +119,3 @@ Custom style for the nav-bar
 Custom style for the default buttons
 
 ****/
-
-.btn-primary {
-    background:  #8f00b3;
-    color: #ffffff;
-}
- 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background: #b800e6;
-}
- 
-.btn-primary:active, .btn-primary.active {
-    background: #8f00b3;
-    box-shadow: none;
-}
