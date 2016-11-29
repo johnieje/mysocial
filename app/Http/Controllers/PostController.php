@@ -33,6 +33,12 @@ class PostController extends Controller
         return view('home', ['posts' => $posts, 'user' => Auth::user()]);
     }
     
+    public function getProfilePosts($user_id){
+        $posts = Post::where('user_id', $user_id)->orderBy('created_at', 'DESC')->get();
+        
+        return view('profile', ['posts' => $posts, 'user' => Auth::user()]);
+    }
+    
     public function postCreatePost(Request $request){
         //validate here
         $this->validate($request, [

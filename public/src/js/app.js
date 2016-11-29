@@ -5,11 +5,12 @@ $('.post').find('.interaction').find('.edit').on('click', function(event){
     event.preventDefault();
     
     postBodyElement = event.target.parentNode.parentNode.childNodes[1];
-    var postBody = postBodyElement.textContent;
+    var postBody = postBodyElement.innerHTML;
     postId = event.target.parentNode.parentNode.dataset['postid'];
     
     $('#edit-body').val(postBody);
     $('#edit-modal').modal();
+    
 });
 
 $('#save-modal').on('click', function(){

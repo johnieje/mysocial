@@ -41,6 +41,11 @@ Route::group(['middleware' => 'web'], function () {
         'middleware' => 'auth'
     ]);
     
+    Route::get('/profile/{user_id}',[
+        'uses' => 'PostController@getProfilePosts',
+        'as' => 'profile'
+    ]);
+    
     Route::post('/createpost', [
         'uses' => 'PostController@postCreatePost',
         'as' => 'createpost',

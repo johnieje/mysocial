@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Home
+   Profile - {{ $user->name }}
 @endsection
 @section('content')
 
@@ -29,7 +29,7 @@
     </section>
     <section class="row posts">
         <div class="col-md-10 col-md-offset-1">
-            <header><h3>More posts...</h3></header>
+            <header><h3>Your posts...</h3></header>
             @foreach($posts as $post)
             <a href="{{ url('/profile', ['user_id' => Auth::user()->id]) }}"><img src="{{ url('account-image',['filename' => $post->user->avatar])}}" alt="" class="img-responsive" ></a>
             
