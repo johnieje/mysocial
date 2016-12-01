@@ -19,9 +19,9 @@
                         </div>
                         <div class="right">
                             <label for="post-body" style="margin-left: 10px">Write a new post</label>                        
-                            <textarea name="post-body" id="post-body" rows="3" class="form-control" placeholder="Write your post here..." style=""></textarea>
+                            <textarea name="post-body" id="post-body" class="form-control" style="height: 74px" placeholder="Write your post here..."></textarea>
                         </div>                  
-                    </div> 
+                    </div>
                     <button type="submit" class="btn btn-primary pull-right">Create Post</button>
                 </form>
             </div>
