@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"href="https://codeorigin.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
     <link href="{{ URL::to('src/css/app.css') }}" rel="stylesheet">
 
 </head>
@@ -43,13 +44,17 @@
                     <li><a href="{{ url('/profile',['user_id' => Auth::user()->id]) }}">Profile</a></li>
                 </ul>
                <div class="col-sm-3 col-md-3">
-                   <form class="navbar-form" role="search">
+                   <form class="navbar-form" role="search" method="post">
                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="q">
+                            <input type="text" class="form-control" placeholder="Search" name="q" id="q">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                             </div>
                        </div>
+                       <div id="result"></div>
+                       <script type="text/javascript">
+                            var urlSearch = "{{ url('/search') }}";
+                       </script>
                    </form>
                </div>
               @endif

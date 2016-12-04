@@ -93,5 +93,17 @@ class HomeController extends Controller
         return false;
     }
    
-    
+    public function getSearchUser(Request $request){
+       $term = $request->term;
+       $users = User::where('name','LIKE','%'.$term.'%')
+            ->take(5)
+            ->get();
+       
+       $result = array();
+       foreach($users as $user){
+           $result[] = ['name' => $user->name];
+       }
+       
+       return response()->json($result);
+   }
 }

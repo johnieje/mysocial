@@ -47,3 +47,18 @@ $('#confirm-delete').on('show.bs.modal', function(e) {
             
     $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 });
+
+$('#q').keyup(function(e){
+    var q = $('#q').val();
+    if(q !== ''){
+        $('#q').autocomplete({
+            source: urlSearch,
+            minLength: 1,
+            autofocus:true,
+            select: function( event, ui ) {
+               $('#result').val(ui.item.value);
+            }
+        });
+    }
+    
+});
