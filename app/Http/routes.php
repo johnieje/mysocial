@@ -100,4 +100,9 @@ Route::group(['middleware' => 'web'], function () {
     
     Route::get('/query', 'HomeController@query');
     
+    Route::get('/user/{id}',[
+        'uses' => 'HomeController@getUserInformation',
+        'as' => 'user'
+    ]);
+    
 });

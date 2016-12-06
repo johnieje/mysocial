@@ -48,12 +48,11 @@ class HomeController extends Controller
         $user = Auth::user();
         $user->name = $request['name'];
         
-        //check for avatar here
-        $file = $request->file('image');
-        $file_name = $user->name . '-' . $user->id . '-' .'.jpg';
-        
-        $user->avatar = $file_name;
         if($request->hasFile('image')){
+             //check for avatar here
+           $file = $request->file('image');
+           $file_name = $user->name . '-' . $user->id . '-' .'.jpg';
+           $user->avatar = $file_name;
            Storage::disk('local')->put($file_name, File::get($file));
            //return redirect()->route('account');
         }
@@ -112,14 +111,21 @@ class HomeController extends Controller
     public function getSearchUser(Request $request){
         $name = $request->user;
         $results = User::where('name', 'LIKE', '%'.$name.'%')->get();
-        if($results)
+        $count = count($results);
+        if($count > 0)
         {
-           return view('search_results')->with('results', $results);
-            //return var_dump($results);
+           return view('search_results')->with(['results' => $results, 'count' => $count]);
         }else{
             $message_fail = "No results! Try again.";
             return redirect()->route('search_results')->with(['message-fail' => $message_fail]);
         }
-        
+     return false;   
+    }
+    
+    public function getUserInformation($id){
+       $user = User::find($id); 
+       if($user){
+           return view('user')->with(['user' => $user]);
+       }
     }
 }
