@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"href="https://codeorigin.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
     <link href="{{ URL::to('src/css/app.css') }}" rel="stylesheet">
 
 </head>
@@ -44,19 +44,18 @@
                     <li><a href="{{ url('/profile',['user_id' => Auth::user()->id]) }}">Profile</a></li>
                 </ul>
                <div class="col-sm-3 col-md-3">
-                   <form class="navbar-form" role="search" method="post">
-                       <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="q" id="q">
+                    <form action="{{ url('/search/user') }}" class="navbar-form" role="search" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="user" id="users" autocomplete="off">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                             </div>
-                       </div>
-                       <div id="result"></div>
-                       <script type="text/javascript">
-                            var urlSearch = "{{ url('/search') }}";
-                       </script>
-                   </form>
-               </div>
+                        </div>
+                    </form>
+                   <script type="text/javascript">
+                        var urlSearch = '{{ url("query") }}';
+                   </script>
+                </div>
               @endif
 
                 <!-- Right Side Of Navbar -->

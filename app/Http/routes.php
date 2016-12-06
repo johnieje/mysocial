@@ -93,9 +93,11 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'delete-account'
     ]);
     
-    Route::get('/search',[
+    Route::get('/search/user',[
         'uses' => 'HomeController@getSearchUser',
-        'as' => 'search'
+        'as' => 'search-user'
     ]);
+    
+    Route::get('/query', 'HomeController@query');
     
 });

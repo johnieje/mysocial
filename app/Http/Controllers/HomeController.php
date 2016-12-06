@@ -93,17 +93,33 @@ class HomeController extends Controller
         return false;
     }
    
+    public function query(Request $request)
+    {
+        $query = $request->term;
+        $results = User::where('name', 'LIKE', '%'.$query.'%')->get();
+
+        //This will only send the e-mail and avatar to avoid that users can view all the rows from selected user table
+        foreach($results as $user ){
+            $usersArray[] = [
+                'name' => $user->name,
+                'avatar' => $user->avatar
+                //'avatar_path' => URL::asset($user->avatar_path)
+            ];
+        }
+        return response()->json($usersArray);
+    }
+    
     public function getSearchUser(Request $request){
-       $term = $request->term;
-       $users = User::where('name','LIKE','%'.$term.'%')
-            ->take(5)
-            ->get();
-       
-       $result = array();
-       foreach($users as $user){
-           $result[] = ['name' => $user->name];
-       }
-       
-       return response()->json($result);
-   }
+        $name = $request->user;
+        $results = User::where('name', 'LIKE', '%'.$name.'%')->get();
+        if($results)
+        {
+           return view('search_results')->with('results', $results);
+            //return var_dump($results);
+        }else{
+            $message_fail = "No results! Try again.";
+            return redirect()->route('search_results')->with(['message-fail' => $message_fail]);
+        }
+        
+    }
 }
