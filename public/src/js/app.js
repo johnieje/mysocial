@@ -63,6 +63,7 @@ $('#users').autocomplete({
             }   
         }); 
     },  
-    minLength: 2
+    minLength: 2,
+    autofocus: true
 });
 
