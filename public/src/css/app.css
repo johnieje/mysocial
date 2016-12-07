@@ -1,5 +1,10 @@
 body {
-  font-family: 'Lato';
+  	font-family: 'Lato';
+	padding-top: 70px;
+}
+
+a:hover{
+	text-decoration: none;
 }
 
 .fa-btn {
