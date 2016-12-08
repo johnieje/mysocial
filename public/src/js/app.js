@@ -6,6 +6,9 @@ $('.post').find('.interaction').find('.edit').on('click', function(event){
     
     postBodyElement = event.target.parentNode.parentNode.childNodes[1];
     var postBody = postBodyElement.innerHTML;
+    //postBodyElement = document.getElementById('post_edit');
+    //var postBody = document.getElementById('comment').textContent;
+    
     postId = event.target.parentNode.parentNode.dataset['postid'];
     
     $('#edit-body').val(postBody);

@@ -33,9 +33,11 @@
             @foreach($posts as $post)
             <a href="{{ url('/profile', ['user_id' => Auth::user()->id]) }}"><img src="{{ url('account-image',['filename' => $post->user->avatar])}}" alt="" class="img-responsive" ></a>
             
-                <article class="post" id="body" data-postid="{{ $post->id}} "><a href="{{ url('/profile', ['user_id' => Auth::user()->id]) }}">{{ $post->user->name }}</a><p>{{ $post->body }}</p>                    
+                <article class="post" id="body" data-postid="{{ $post->id}} "><a href="{{ url('/profile', ['user_id' => Auth::user()->id]) }}">{{ $post->user->name }}</a><p id="comment">{{ $post->body }}</p>                    
                     <div class="info"></br>
-                        Posted on {{ $post->created_at }}
+                        Posted: 
+                        {{ Nicetime::niceTime($post->created_at) }}
+                    
                     </div>
                     <div class="interaction">
                        <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? "You like this post" : "Like" : "Like" }}</a> | 
