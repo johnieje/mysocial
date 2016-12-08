@@ -55,6 +55,17 @@
         </div>
         
     </section>
+<section>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="joined">
+                <p>
+                   Joined Socialight {{ Nicetime::niceTime($user->created_at) }} 
+                </p>
+            </div>
+        </div>
+    </div>   
+</section>
 </div>
 <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
   <div class="modal-dialog" role="document">
