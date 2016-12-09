@@ -45,9 +45,25 @@
                         @if( Auth::user() == $post->user)
                         |
                         <a href="#" class="edit">Edit</a> | 
-                       <a href="{{ url('delete-post', ['post_id' => $post->id]) }}">Delete</a>
+                       <a href="{{ url('delete-post', ['post_id' => $post->id]) }}"><i class="fa fa-trash-o" aria-hidden="true"  title="Delete"></i></a>
                         @endif
                        
+                    </div>
+                    <div class="comment">
+                        <div class="comment">
+                        <h5>Comments</h5>
+                        </div>
+                        <form action="{{ url('comment') }}" class="post_comment" method="post">
+                            <div class="input-group">
+                               <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                <input type="hidden" name="_token" value="{{ Session::token() }}">
+                                <textarea name="comment_body" id="comment_body" rows="1" class="form-control" placeholder="Write your comment here..."></textarea>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="fa fa-comment fa-lg" title="Post Comment"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        
                     </div>
                 </article>
             <hr>
@@ -58,11 +74,9 @@
 <section>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="joined">
-                <p>
+                <div>
                    Joined Socialight {{ Nicetime::niceTime($user->created_at) }} 
-                </p>
-            </div>
+                </div>
         </div>
     </div>   
 </section>

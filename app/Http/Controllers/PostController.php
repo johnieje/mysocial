@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use App\Like;
 use App\Http\Requests;
@@ -115,6 +116,28 @@ class PostController extends Controller
         }
         
         return null;
+    }
+    
+    public function postCommentPost(Request $request){
+        $this->validate($request, [
+            'comment_body' => 'required|max:255'
+        ]);
+        
+        $comment = new Comment;
+        
+        $user = Auth::user();
+        $comment->comment = $request['comment_body'];
+        $comment->post_id = $request['post_id'];
+        $comment->user_id = $user->id;
+        
+        if($comment->save()){// save post as current user
+            $message_success = "Your comment has been successfully created";
+            return redirect()->route('home')->with(['message-success' => $message_success]);
+        }else{
+            $message_fail = "An error occurred while creating your comment! Try again.";
+            return redirect()->route('home')->with(['message-fail' => $message_fail]);
+        }
+       
     }
     
 }
