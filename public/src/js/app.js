@@ -70,3 +70,34 @@ $('#users').autocomplete({
     autofocus: true
 });
 
+/*
+$(function () 
+  {
+    //-----------------------------------------------------------------------
+    // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
+    //-----------------------------------------------------------------------
+   var post = document.querySelector('#body');
+    
+   var postId = post.dataset.postid;
+    
+    $.ajax({                                      
+      url: urlComment,                  //the script to call to get data          
+      data: {postId: postId},                        //you can insert url argumnets here to pass to api.php
+                                       //for example "id=5&parent=6"
+      dataType: 'json',                //data format      
+      success: function(data)          //on recieve of reply
+      {
+        //var id = data[0];              //get id
+        var counter = data[0].count;           //get name
+          
+          //console.log(counter);
+        //--------------------------------------------------------------------
+        // 3) Update html content
+        //--------------------------------------------------------------------
+        $('#output').html("<b>Comments: </b>"+counter); //Set output element html
+        //recommend reading up on jquery selectors they are awesome 
+        // http://api.jquery.com/category/selectors/
+      } 
+    });
+  }); 
+*/

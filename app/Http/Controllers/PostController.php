@@ -140,4 +140,24 @@ class PostController extends Controller
        
     }
     
+    public function getCommentCount(Request $request){
+        $post_id = $request['postId'];
+        $results = Comment::where('post_id', $post_id)->get();
+        $commentsArray[] = [
+           'count' => count($results)
+                //'avatar_path' => URL::asset($user->avatar_path)
+        ];
+        return response()->json($commentsArray);
+    }
+    
+    public function getCommentsPost($post_id){
+        $user = Auth::user();
+        $post = Post::where('id', $post_id)->first();
+        
+        $comments = Comment::where('post_id', $post_id)->get();
+        $count = count($comments);
+        
+        return view('comment', ['post' => $post, 'user' => $user, 'comments' => $comments, 'count' => $count]);
+    }
+    
 }

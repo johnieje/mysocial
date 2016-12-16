@@ -110,4 +110,9 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'comment'
     ]);
     
+    Route::get('/get-comments/{post_id}',[
+        'uses' => 'PostController@getCommentsPost',
+        'as' => 'get-comments'
+    ]);
+    
 });

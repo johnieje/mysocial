@@ -15,7 +15,7 @@
                     
                     <div class="wrap form-group">
                         <div class="left">
-                            <img src="{{ url('account-image',['filename' => $user->avatar])}}" alt="" class="img-responsive">
+                            <a href="{{ url('/profile', ['user_id' => Auth::user()->id]) }}"><img src="{{ url('account-image',['filename' => $user->avatar])}}" alt="" class="img-responsive"></a>
                         </div>
                         <div class="right">
                             <label for="post-body" style="margin-left: 10px">Write a new post</label>                        
@@ -33,7 +33,7 @@
             @foreach($posts as $post)
             <a href="{{ url('/profile', ['user_id' => Auth::user()->id]) }}"><img src="{{ url('account-image',['filename' => $post->user->avatar])}}" alt="" class="img-responsive" ></a>
             
-                <article class="post" id="body" data-postid="{{ $post->id}} "><a href="{{ url('/profile', ['user_id' => Auth::user()->id]) }}">{{ $post->user->name }}</a><p id="comment">{{ $post->body }}</p>                    
+                <article class="post" id="body" data-postid="{{ $post->id}} "><a href="{{ url('/profile', ['user_id' => $post->user->id]) }}">{{ $post->user->name }}</a><p id="comment">{{ $post->body }}</p>                    
                     <div class="info"></br>
                         Posted: 
                         {{ Nicetime::niceTime($post->created_at) }}
@@ -46,13 +46,11 @@
                         |
                         <a href="#" class="edit">Edit</a> | 
                        <a href="{{ url('delete-post', ['post_id' => $post->id]) }}"><i class="fa fa-trash-o" aria-hidden="true"  title="Delete"></i></a>
+                        
                         @endif
-                       
+                       | <a href="{{ url('get-comments', ['post_id' => $post->id]) }}">Comments</a>
                     </div>
-                    <div class="comment">
-                        <div class="comment">
-                        <h5>Comments</h5>
-                        </div>
+                    <div class="">
                         <form action="{{ url('comment') }}" class="post_comment" method="post">
                             <div class="input-group">
                                <input type="hidden" name="post_id" value="{{ $post->id }}">
@@ -66,7 +64,6 @@
                         
                     </div>
                 </article>
-            <hr>
             @endforeach
         </div>
         
